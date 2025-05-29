@@ -1,14 +1,13 @@
 package com.spring.sns.post.service;
 
 import com.spring.sns.post.domain.Post;
-import com.spring.sns.post.dto.PostCreateRequestDto;
-import com.spring.sns.post.dto.PostCreateResponseDto;
-import com.spring.sns.post.dto.PostListDto;
-import com.spring.sns.post.dto.PostListResponseDto;
+import com.spring.sns.post.dto.*;
 import com.spring.sns.post.repository.PostRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -66,4 +65,22 @@ public class PostService {
         // 반환
         return postListResponseDto;
     }
+
+    /**
+     * 게시물 단건 조회 API
+     */
+    public PostDetailResponseDto getPostDetailService(Long postId) {
+        Optional<Post> postOptional = postRepository.findById(postId);
+        if (postOptional.isPresent()) {
+            Post foundPost = postOptional.get();
+
+            // dto 만들기
+            PostDetailResponseDto postDetailResponseDto = new PostDetailResponseDto(foundPost);
+            return postDetailResponseDto;
+        } else {
+            return null;
+        }
+    }
+
+
 }
