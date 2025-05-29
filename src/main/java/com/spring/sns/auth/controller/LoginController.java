@@ -1,6 +1,9 @@
 package com.spring.sns.auth.controller;
 
 import com.spring.sns.auth.service.LoginService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +22,10 @@ public class LoginController {
     /**
      * 로그인 API
      */
-    public void login () {
-
+    @PostMapping("/login")
+    public ResponseEntity<String> login () {
+      ResponseEntity<String> response = new ResponseEntity<>("create", HttpStatus.CREATED);
+        return response;
     }
+
 }
