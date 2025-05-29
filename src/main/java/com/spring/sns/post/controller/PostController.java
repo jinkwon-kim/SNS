@@ -2,6 +2,7 @@ package com.spring.sns.post.controller;
 
 import com.spring.sns.post.dto.PostCreateRequestDto;
 import com.spring.sns.post.dto.PostCreateResponseDto;
+import com.spring.sns.post.dto.PostListResponseDto;
 import com.spring.sns.post.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,9 +35,9 @@ public class PostController {
      * 게시물 전체 조회 API
      */
     @GetMapping
-    public ResponseEntity<String> getPostListAPI() {
-        System.out.println("되니?");
-        ResponseEntity<String> response = new ResponseEntity<>("success" , HttpStatus.OK);
+    public ResponseEntity<PostListResponseDto> getPostListAPI() {
+        PostListResponseDto postListService = postService.getPostListService();
+        ResponseEntity<PostListResponseDto> response = new ResponseEntity<>(postListService , HttpStatus.OK);
         return response;
     }
 

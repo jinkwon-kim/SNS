@@ -3,8 +3,13 @@ package com.spring.sns.post.service;
 import com.spring.sns.post.domain.Post;
 import com.spring.sns.post.dto.PostCreateRequestDto;
 import com.spring.sns.post.dto.PostCreateResponseDto;
+import com.spring.sns.post.dto.PostListDto;
+import com.spring.sns.post.dto.PostListResponseDto;
 import com.spring.sns.post.repository.PostRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PostService {
@@ -42,5 +47,23 @@ public class PostService {
     /**
      * 게시물 전체 조회 API
      */
+    public PostListResponseDto getPostListService() {
+        // 데이터 조회
+        List<Post> postList = postRepository.findAll();
+        // Stream 사용
+        List<PostListDto> postListDtoList = postList.stream().map(post -> new PostListDto(
+                post.getPostId(),
+                post.getTitle(),
+                post.getContent(),
+                post.getUserName(),
+                post.getCreatedAt(),
+                post.getUpdatedAt())
+        ).collect(Collectors.toList());
 
+        // 반환 Dto 만들기
+        PostListResponseDto postListResponseDto = new PostListResponseDto(postListDtoList);
+
+        // 반환
+        return postListResponseDto;
+    }
 }
