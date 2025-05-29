@@ -13,9 +13,6 @@ public class Post {
     private Long postId;
 
     @Column(nullable = false)
-    private Long userId;
-
-    @Column(nullable = false)
     private String title;
 
     @Column(nullable = false)
@@ -53,7 +50,41 @@ public class Post {
 
     // 생성자
     // JPA가 사용
-    protected Post () {}
+    public Post () {}
 
+    private Post (String title , String content , String userName) {
+        this.title = title;
+        this.content = content;
+        this.userName = userName;
+    }
 
+    public static Post createFromPostCreateRequestDto(String title , String content , String userName) {
+        return new Post(title, content, userName);
+    }
+
+    // 기능
+    // 게터
+    public Long getPostId() {
+        return postId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 }
