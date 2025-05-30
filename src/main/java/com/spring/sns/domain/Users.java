@@ -10,19 +10,26 @@ public class Users {
     //속성
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+
     @Column(nullable = false, length = 100)
     private String userEmail;
-    @Column(nullable = false, length = 255)
+
+    @Column(nullable = false)
     private String password;
+
     @Column(nullable = false, length = 50)
     private String username;
+
     @Column(nullable = false)
     private String content;
+
     @Column(nullable = false)
     private LocalDateTime createdAt;
+
     @Column(nullable = false)
     private LocalDateTime updatedAt;
-//생성자
 
-//기능
+    //생성자
+
+    //기능
 }
