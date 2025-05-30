@@ -1,21 +1,20 @@
 package com.spring.sns.auth.entity;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "User")
+
 public class User {
 //속성
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String userEmail;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String password;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String username;
 
     private String content;
