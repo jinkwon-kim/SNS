@@ -27,7 +27,7 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity<String> login (@RequestBody LoginRequestDto requestDto){
         ResponseEntity<String> response = new ResponseEntity<>("create", HttpStatus.CREATED);
-        return response;
+        return ResponseEntity.ok(token);
     }
 
 }

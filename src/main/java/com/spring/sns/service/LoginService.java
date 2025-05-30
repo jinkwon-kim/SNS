@@ -32,7 +32,7 @@ public class LoginService {
         if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new RuntimeException("Invalid password");
         }
-        //반환
+        //토큰 반환
 
     }
     }
