@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Entity
-public class Posts {
+public class Post {
     // 속성
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
@@ -54,7 +54,7 @@ public class Posts {
     /**
      * 기본생성자(JPA에서 사용)
      */
-    public Posts() {}
+    public Post() {}
 
 
     // 기능
