@@ -34,7 +34,7 @@ public class Comments {
     /**
      * 기본생성자(JPA에서 사용)
      */
-    public Comment() {}
+    public Comments() {}
 
     /**
      * createCommentRequestDto에서 사용하는 생성자
