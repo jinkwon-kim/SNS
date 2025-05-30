@@ -7,6 +7,7 @@ import java.time.ZoneOffset;
 
 @Entity
 public class Posts {
+    // 속성
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
@@ -48,4 +49,13 @@ public class Posts {
         LocalDateTime now = LocalDateTime.now(ZoneOffset.UTC);
         this.updatedAt = now;
     }
+
+    // 생성자
+    /**
+     * 기본생성자(JPA에서 사용)
+     */
+    public Posts() {}
+
+
+    // 기능
 }
