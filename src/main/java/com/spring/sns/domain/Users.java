@@ -16,7 +16,7 @@ public class Users {
     private String password;
     @Column(nullable = false, length = 50)
     private String username;
-
+    @Column(nullable = false)
     private String content;
     @Column(nullable = false)
     private LocalDateTime createdAt;
