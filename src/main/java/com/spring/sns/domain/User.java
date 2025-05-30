@@ -6,22 +6,23 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Entity
-public class Posts {
-    // 속성
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long postId;
 
-    @Column(name = "USER_ID", nullable = false)
+public class User {
+    //속성
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
     @Column(nullable = false, length = 100)
-    private String title;
+    private String userEmail;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false, length = 50)
+    private String username;
 
     @Column(nullable = false)
     private String content;
-
-    @Column(nullable = false, length = 50)
-    private String userName;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
@@ -50,12 +51,12 @@ public class Posts {
         this.updatedAt = now;
     }
 
-    // 생성자
+    //생성자
     /**
      * 기본생성자(JPA에서 사용)
      */
-    public Posts() {}
+    public User() {}
 
 
-    // 기능
+    //기능
 }

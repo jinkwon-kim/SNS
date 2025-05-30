@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Entity
-public class Comments {
+public class Comment {
 
     // 속성
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,7 +56,7 @@ public class Comments {
     /**
      * 기본생성자(JPA에서 사용)
      */
-    public Comments() {}
+    public Comment() {}
 
 
     // 기능
