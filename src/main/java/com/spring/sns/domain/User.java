@@ -59,4 +59,13 @@ public class User {
 
 
     //기능
+
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
 }
