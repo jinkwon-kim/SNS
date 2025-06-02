@@ -42,7 +42,7 @@ public class FollowRepository {
     }
 
     //친구 게시물 조회
-    public List<Post> getFollowPost(List<Long> userIds){
+    /*public List<Post> getFollowPost(List<Long> userIds){
         if (userIds.isEmpty()) return List.of();  // 팔로잉한 사람이 없을 경우 대비
 
         String inSql = String.join(",", userIds.stream().map(id -> "?").toList());
@@ -60,5 +60,6 @@ public class FollowRepository {
             post.setUpdatedAt(rs.getTimestamp("updated_at").toLocalDateTime());
             return post;
         });
+        */
 
 }

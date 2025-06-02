@@ -38,10 +38,12 @@ public class FollowService {
     }
 
     //친구 게시물 조회
+    /*
     public List<Post> getFriendPost(Long userid){
+
         List<Long> followids = followRepository.getFollowList(userid);
         return followRepository.getFollowPost(followids);
     }
-
+*/
 
 }
