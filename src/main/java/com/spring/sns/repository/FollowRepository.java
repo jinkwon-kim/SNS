@@ -1,6 +1,7 @@
 package com.spring.sns.repository;
 
 import com.spring.sns.domain.Post;
+import com.spring.sns.dto.FollowPostDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -42,24 +43,22 @@ public class FollowRepository {
     }
 
     //친구 게시물 조회
-    /*public List<Post> getFollowPost(List<Long> userIds){
-        if (userIds.isEmpty()) return List.of();  // 팔로잉한 사람이 없을 경우 대비
+    public List<FollowPostDto> getFollowPosts(List<Long> friendIds) {
 
-        String inSql = String.join(",", userIds.stream().map(id -> "?").toList());
+        String inSql = String.join(",", friendIds.stream().map(id -> "?").toList());
         String sql = "SELECT post_id, user_id, title, content, user_name, created_at, updated_at " +
                 "FROM posts WHERE user_id IN (" + inSql + ") ORDER BY created_at DESC";
 
-        return jdbcTemplate.query(sql, userIds.toArray(), (rs, rowNum) -> {
-            Post post = new Post();
-            post.setPostId(rs.getLong("post_id"));
-            post.setUserId(rs.getLong("user_id"));
-            post.setTitle(rs.getString("title"));
-            post.setContent(rs.getString("content"));
-            post.setUserName(rs.getString("user_name"));
-            post.setCreatedAt(rs.getTimestamp("created_at").toLocalDateTime());
-            post.setUpdatedAt(rs.getTimestamp("updated_at").toLocalDateTime());
-            return post;
+        return jdbcTemplate.query(sql, friendIds.toArray(), (rs, rowNum) -> {
+            FollowPostDto dto = new FollowPostDto();
+            dto.setPostId(rs.getLong("post_id"));
+            dto.setUserId(rs.getLong("user_id"));
+            dto.setTitle(rs.getString("title"));
+            dto.setContent(rs.getString("content"));
+            dto.setUserName(rs.getString("user_name"));
+            dto.setCreatedAt(rs.getTimestamp("created_at"));
+            dto.setUpdatedAt(rs.getTimestamp("updated_at"));
+            return dto;
         });
-        */
-
+    }
 }

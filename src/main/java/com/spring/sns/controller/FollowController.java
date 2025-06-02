@@ -1,5 +1,6 @@
 package com.spring.sns.controller;
 
+import com.spring.sns.dto.FollowPostDto;
 import com.spring.sns.repository.FollowRepository;
 import com.spring.sns.service.FollowService;
 import org.springframework.http.ResponseEntity;
@@ -46,14 +47,11 @@ public class FollowController {
     }
 
     //팔로잉한 사람의 게시물 즈회
-    /*
     @GetMapping("/{userid}/follow/feed")
-    public ResponseEntity<List<Post>> getFollowFeed(@PathVariable Long userid) {
-        List<Post> feed = followService.getFriendPost(userid);
+    public ResponseEntity<List<FollowPostDto>> getFollowFeed(@PathVariable Long userid) {
+        List<FollowPostDto> feed = followService.getFollowFeed(userid);
         return ResponseEntity.ok(feed);
     }
-
-     */
 
 }
 
