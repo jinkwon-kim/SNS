@@ -1,18 +1,21 @@
 package com.spring.sns.domain;
 
+import com.spring.sns.dto.posts.PostCreateRequestDto;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Entity
+@Table(name = "posts")
 public class Post {
     // 속성
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
-    @Column(name = "USER_ID", nullable = false)
-    private Long userId;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     @Column(nullable = false, length = 100)
     private String title;
@@ -28,6 +31,7 @@ public class Post {
 
     @Column(nullable = false)
     private LocalDateTime updatedAt;
+
 
     /**
      * 엔티티가 처음 저장되기 직전에 호출
@@ -56,6 +60,37 @@ public class Post {
      */
     public Post() {}
 
+    public Post(PostCreateRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+        this.userName = requestDto.getUserName();
+    }
 
     // 기능
+    // 게터
+
+
+    public Long getPostId() {
+        return postId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 }

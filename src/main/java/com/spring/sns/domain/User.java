@@ -1,12 +1,13 @@
 package com.spring.sns.domain;
 
+import com.spring.sns.dto.users.CreateUserRequestDto;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Entity
-
+@Table(name = "users")
 public class User {
     //속성
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +20,7 @@ public class User {
     private String password;
 
     @Column(nullable = false, length = 50)
-    private String username;
+    private String userName;
 
     @Column(nullable = false)
     private String content;
@@ -57,6 +58,36 @@ public class User {
      */
     public User() {}
 
+    public User(CreateUserRequestDto requestDto){
+        this.userEmail = requestDto.getUserEmail();
+        this.password = requestDto.getPassword();
+        this.userName = requestDto.getUserName();
+        this.content = requestDto.getContent();
+    }
 
-    //기능
+    // 기능
+    // 게터
+    public Long getUserId() {
+        return userId;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public String getUsername() {
+        return userName;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 }
