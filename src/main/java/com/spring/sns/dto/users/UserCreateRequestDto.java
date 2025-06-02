@@ -1,14 +1,14 @@
-package com.spring.sns.dto.loginDto;
+package com.spring.sns.dto.users;
 
 public class UserCreateRequestDto {
     // 속성
     private String userEmail;
     private String password;
-    private String username;
+    private String userName;
     private String content;
 
     // 생성자
-    public UserCreateRequestDto() {}
+
 
     // 기능
     // 게터
@@ -20,8 +20,8 @@ public class UserCreateRequestDto {
         return password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     public String getContent() {

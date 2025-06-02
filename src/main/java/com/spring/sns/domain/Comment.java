@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Entity
+@Table(name = "comments")
 public class Comment {
 
     // 속성

@@ -1,8 +1,6 @@
 package com.spring.sns.controller;
 
 import com.spring.sns.dto.loginDto.LoginRequestDto;
-import com.spring.sns.dto.loginDto.UserCreateRequestDto;
-import com.spring.sns.dto.loginDto.UserCreateResponseDto;
 import com.spring.sns.service.LoginService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -58,15 +56,6 @@ public class LoginController {
         } catch (RuntimeException e) {
             return ResponseEntity.status(400).body("회원탈퇴 실패: " + e.getMessage());
         }
-    }
-    /**
-     * 회원가입 API
-     */
-    @PostMapping
-    public ResponseEntity<UserCreateResponseDto> createUserAPI(@RequestBody UserCreateRequestDto requestDto) {
-        UserCreateResponseDto responseDto = loginService.createUserService(requestDto);
-        ResponseEntity<UserCreateResponseDto> response = new ResponseEntity<>(responseDto , HttpStatus.OK);
-        return response;
     }
 }
 

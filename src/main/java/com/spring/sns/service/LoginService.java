@@ -3,8 +3,8 @@ package com.spring.sns.service;
 import com.spring.sns.config.PasswordEncoder;
 import com.spring.sns.dto.loginDto.LoginRequestDto;
 import com.spring.sns.domain.User;
-import com.spring.sns.dto.loginDto.UserCreateRequestDto;
-import com.spring.sns.dto.loginDto.UserCreateResponseDto;
+import com.spring.sns.dto.users.UserCreateRequestDto;
+import com.spring.sns.dto.users.UserCreateResponseDto;
 import com.spring.sns.repository.LoginRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -69,11 +69,7 @@ public class LoginService {
         String encodedPassword = passwordEncoder.encode(requestDto.getPassword());
 
         // User 객체 생성 시 암호화된 비밀번호로 세팅
-        User user = new User(requestDto.getUserEmail(),
-                encodedPassword,
-                requestDto.getUsername(),
-                requestDto.getContent()
-        );
+        User user = new User(requestDto);
 
         User saveUser = loginRepository.save(user);
         return new UserCreateResponseDto(saveUser);

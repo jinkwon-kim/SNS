@@ -1,6 +1,7 @@
 package com.spring.sns.domain;
 
-import com.spring.sns.dto.loginDto.UserCreateRequestDto;
+
+import com.spring.sns.dto.users.UserCreateRequestDto;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -19,8 +20,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, length = 50, name = "user_name")
-    private String username;
+    @Column(nullable = false, length = 50)
+    private String userName;
 
     @Column(nullable = false)
     private String content;
@@ -58,18 +59,15 @@ public class User {
      */
     public User() {}
 
-    public User(String userEmail, String password, String username, String content) {
-        this.userEmail = userEmail;
-        this.password = password;  // 암호화된 값이 여기 들어와야 함!
-        this.username = username;
-        this.content = content;
-    }
-    //기능
-
-    public String getPassword() {
-        return password;
+    public User(UserCreateRequestDto requestDto){
+        this.userEmail = requestDto.getUserEmail();
+        this.password = requestDto.getPassword();
+        this.userName = requestDto.getUserName();
+        this.content = requestDto.getContent();
     }
 
+    // 기능
+    // 게터
     public Long getUserId() {
         return userId;
     }
@@ -78,8 +76,12 @@ public class User {
         return userEmail;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public String getUsername() {
-        return username;
+        return userName;
     }
 
     public String getContent() {

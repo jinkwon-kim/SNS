@@ -1,23 +1,25 @@
-package com.spring.sns.dto.loginDto;
+package com.spring.sns.dto.users;
 
 import com.spring.sns.domain.User;
 
 import java.time.LocalDateTime;
 
-public class UserCreateResponseDto {
+public class UserGetProfileResponseDto {
     // 속성
     private Long userId;
     private String userEmail;
-    private String username;
+    private String userName;
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     // 생성자
-    public UserCreateResponseDto(User user) {
+
+
+    public UserGetProfileResponseDto(User user) {
         this.userId = user.getUserId();
         this.userEmail = user.getUserEmail();
-        this.username = user.getUsername();
+        this.userName = user.getUsername();
         this.content = user.getContent();
         this.createdAt = user.getCreatedAt();
         this.updatedAt = user.getUpdatedAt();
@@ -33,8 +35,8 @@ public class UserCreateResponseDto {
         return userEmail;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     public String getContent() {
