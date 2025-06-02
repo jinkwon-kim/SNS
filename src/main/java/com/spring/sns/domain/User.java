@@ -1,24 +1,25 @@
 package com.spring.sns.domain;
 
+import com.spring.sns.dto.loginDto.UserCreateRequestDto;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Entity
-
+@Table(name = "users")
 public class User {
     //속성
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, name = "user_email")
     private String userEmail;
 
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, name = "user_name")
     private String username;
 
     @Column(nullable = false)
@@ -57,6 +58,39 @@ public class User {
      */
     public User() {}
 
-
+    public User(String userEmail, String password, String username, String content) {
+        this.userEmail = userEmail;
+        this.password = password;  // 암호화된 값이 여기 들어와야 함!
+        this.username = username;
+        this.content = content;
+    }
     //기능
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 }
