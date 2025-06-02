@@ -11,7 +11,8 @@ import java.time.ZoneOffset;
 @Table(name = "posts")
 public class Post {
     // 속성
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
 //    @ManyToOne
@@ -56,10 +57,12 @@ public class Post {
     }
 
     // 생성자
+
     /**
      * 기본생성자(JPA에서 사용)
      */
-    public Post() {}
+    public Post() {
+    }
 
     public Post(PostCreateRequestDto requestDto) {
         this.title = requestDto.getTitle();

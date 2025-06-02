@@ -11,7 +11,8 @@ import java.time.ZoneOffset;
 @Table(name = "users")
 public class User {
     //속성
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
     @Column(nullable = false, length = 100, name = "user_email")
@@ -54,10 +55,12 @@ public class User {
     }
 
     //생성자
+
     /**
      * 기본생성자(JPA에서 사용)
      */
-    public User() {}
+    public User() {
+    }
 
     public User(UserCreateRequestDto requestDto){
         this.userEmail = requestDto.getUserEmail();
@@ -65,6 +68,7 @@ public class User {
         this.userName = requestDto.getUserName();
         this.content = requestDto.getContent();
     }
+
 
     // 기능
     // 게터
@@ -94,5 +98,6 @@ public class User {
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
+
     }
 }
