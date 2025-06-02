@@ -57,6 +57,10 @@ public class LoginController {
             return ResponseEntity.status(400).body("회원탈퇴 실패: " + e.getMessage());
         }
     }
+    /**
+     * 회원가입
+     */
+
 }
 
 
