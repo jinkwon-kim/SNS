@@ -6,13 +6,17 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Entity
-public class Follows {
+public class Follow {
+    // 속성
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "USER_ID", nullable = false)
     private Long userId;
+
     @Column(name = "TARGET_ID", nullable = false)
     private Long targetId;
+
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
@@ -25,4 +29,13 @@ public class Follows {
         LocalDateTime now = LocalDateTime.now(ZoneOffset.UTC);
         this.createdAt = now;
     }
+
+    // 생성자
+    /**
+     * 기본생성자(JPA에서 사용)
+     */
+    public Follow() {}
+
+
+    // 기능
 }
