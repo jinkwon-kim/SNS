@@ -1,19 +1,18 @@
 package com.spring.sns.service;
 
 import com.spring.sns.domain.User;
-import com.spring.sns.dto.users.UserCreateRequestDto;
-import com.spring.sns.dto.users.UserCreateResponseDto;
-import com.spring.sns.dto.users.UserGetProfileResponseDto;
-import com.spring.sns.dto.users.UserUpdateRequestDto;
+import com.spring.sns.dto.UserEditRequestDto;
 import com.spring.sns.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import com.spring.sns.dto.UserCheckResponseDto;
+
 
 import java.util.Optional;
 
 @Service
 public class UserService {
     // 속성
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     // 생성자
     public UserService(UserRepository userRepository) {
@@ -23,33 +22,22 @@ public class UserService {
     // 기능
 
     /**
-     * 회원가입 기능
+     * 게시물 단건 조회 API
      */
-    public UserCreateResponseDto createUserService(UserCreateRequestDto requestDto) {
-        User user = new User(requestDto);
-        User saveUser = userRepository.save(user);
-        UserCreateResponseDto responseDto = new UserCreateResponseDto(saveUser);
-        return responseDto;
-    }
+    public UserCheckResponseDto getProfileService(Long userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent()) {
+            User foundUser = userOptional.get();
 
-    /**
-     * 회원 조회 기능
-     */
-    public UserGetProfileResponseDto getUserProfileService(Long userId) {
-        Optional<User> optionalUser = userRepository.findById(userId);
-        if (optionalUser.isPresent()) {
-            User foundUser = optionalUser.get();
-            UserGetProfileResponseDto responseDto = new UserGetProfileResponseDto(foundUser);
-            return responseDto;
+            // dto 만들기
+            UserCheckResponseDto userCheckResponseDto = new UserCheckResponseDto(foundUser);
+            return userCheckResponseDto;
         } else {
             return null;
         }
     }
-
-    /**
-     * 회원 정보 수정 기능
-     */
-    public void updateUserService(Long userId , UserUpdateRequestDto requestDto) {
+    //회원 수정
+    public void EditUserService(Long userId , UserEditRequestDto requestDto) {
 
     }
 }
