@@ -3,6 +3,7 @@ package com.spring.sns.service;
 import com.spring.sns.domain.Post;
 import com.spring.sns.dto.posts.*;
 import com.spring.sns.repository.PostRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class PostService {
     /**
      * 게시물 생성 기능
      */
+    @Transactional
     public PostCreateResponseDto createPostService(PostCreateRequestDto requestDto) {
         Post foundPost = new Post(requestDto);
         Post savePost = postRepository.save(foundPost);
@@ -57,13 +59,13 @@ public class PostService {
     /**
      * 게시물 수정 기능
      */
+    @Transactional
     public PostUpdateResponseDto updatePostService(Long postid, PostUpdateRequestDto requestDto) {
         Optional<Post> optionalPost = postRepository.findById(postid);
         if (optionalPost.isPresent()) {
             Post foundPost = optionalPost.get();
             foundPost.updatePost(requestDto);
-            Post savePost = postRepository.save(foundPost);
-            PostUpdateResponseDto responseDto = new PostUpdateResponseDto(savePost);
+            PostUpdateResponseDto responseDto = new PostUpdateResponseDto(foundPost);
             return responseDto;
         } else {
             return null;
