@@ -1,6 +1,6 @@
 package com.spring.sns.domain;
 
-import com.spring.sns.dto.users.CreateUserRequestDto;
+import com.spring.sns.dto.users.UserCreateRequestDto;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -58,7 +58,7 @@ public class User {
      */
     public User() {}
 
-    public User(CreateUserRequestDto requestDto){
+    public User(UserCreateRequestDto requestDto){
         this.userEmail = requestDto.getUserEmail();
         this.password = requestDto.getPassword();
         this.userName = requestDto.getUserName();
