@@ -21,19 +21,30 @@ public class LoginService {
     }
 
     //기능
+
+    //로그인 처리
     @Transactional
-    public void login (LoginRequestDto requestDto) {
+    public String login (LoginRequestDto requestDto) {
         //데이터 준비
         String userEmail = requestDto.getUserEmail();
         String password = requestDto.getPassword();
-        //조회 및 검증
+        //이메일로 사용자 찾기
         User user = loginRepository.findByUserEmail(userEmail)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new RuntimeException("유저를 찾을 수 없습니다."));
+        //비밀번호 비교
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new RuntimeException("Invalid password");
+            throw new RuntimeException("비밀번호가 일치하지 않습니다.");
         }
-        //토큰 반환
+        //로그인 성공
+        return "로그인 성공";
+    }
+    //로그아웃처리
+    @Transactional
+    public void logout(String userEmail) {
+        User user = loginRepository.findByUserEmail(userEmail)
+                .orElseThrow(() -> new RuntimeException("존재하지 않는 사용자입니다."));
 
+        System.out.println("로그아웃 처리 완료: " + userEmail);
     }
     }
 
