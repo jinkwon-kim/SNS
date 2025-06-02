@@ -1,4 +1,4 @@
-package com.spring.sns.userPro.dto;
+package com.spring.sns.dto;
 
 import com.spring.sns.domain.User;
 

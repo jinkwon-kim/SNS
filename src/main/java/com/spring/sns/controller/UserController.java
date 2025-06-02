@@ -1,8 +1,8 @@
-package com.spring.sns.userPro.controller;
+package com.spring.sns.controller;
 
-import com.spring.sns.userPro.dto.UserCheckResponseDto;
-import com.spring.sns.userPro.dto.UserEditResponseDto;
-import com.spring.sns.userPro.service.UserService;
+import com.spring.sns.dto.UserCheckResponseDto;
+import com.spring.sns.dto.UserEditResponseDto;
+import com.spring.sns.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
