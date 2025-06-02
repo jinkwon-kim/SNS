@@ -1,5 +1,6 @@
 package com.spring.sns.domain;
 
+import com.spring.sns.dto.loginDto.UserCreateRequestDto;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -57,10 +58,40 @@ public class User {
      */
     public User() {}
 
+    public User(UserCreateRequestDto dto) {
+        this.userEmail = dto.getUserEmail();
+        this.password = dto.getPassword();
+        this.username = dto.getUsername();
+        this.content = dto.getContent();
 
+    }
     //기능
 
     public String getPassword() {
         return password;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 }

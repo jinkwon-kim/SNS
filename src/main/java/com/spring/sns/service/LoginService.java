@@ -3,6 +3,8 @@ package com.spring.sns.service;
 import com.spring.sns.config.PasswordEncoder;
 import com.spring.sns.dto.loginDto.LoginRequestDto;
 import com.spring.sns.domain.User;
+import com.spring.sns.dto.loginDto.UserCreateRequestDto;
+import com.spring.sns.dto.loginDto.UserCreateResponseDto;
 import com.spring.sns.repository.LoginRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,6 +62,18 @@ public class LoginService {
         }
 
         loginRepository.delete(user);
+    }
+    //회원 가입 처리
+    public UserCreateResponseDto createUserService(UserCreateRequestDto requestDto) {
+        // 비밀번호 암호화
+        String encodedPassword = passwordEncoder.encode(requestDto.getPassword());
+
+        // User 객체 생성 시 암호화된 비밀번호로 세팅
+        User user = new User(
+        );
+
+        User saveUser = loginRepository.save(user);
+        return new UserCreateResponseDto(saveUser);
     }
     }
 

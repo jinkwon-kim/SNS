@@ -10,4 +10,5 @@ public interface LoginRepository extends JpaRepository<User, Long> {
     //이메일 기준으로 사용자 조회
     Optional<User> findByUserEmail(String userEmail);
 
+
 }
