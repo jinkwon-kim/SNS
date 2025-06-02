@@ -1,6 +1,6 @@
 package com.spring.sns.controller;
 
-import com.spring.sns.dto.FollowPostDto;
+import com.spring.sns.dto.follows.FollowPostDto;
 import com.spring.sns.repository.FollowRepository;
 import com.spring.sns.service.FollowService;
 import org.springframework.http.ResponseEntity;

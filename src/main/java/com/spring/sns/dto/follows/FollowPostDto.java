@@ -1,4 +1,4 @@
-package com.spring.sns.dto;
+package com.spring.sns.dto.follows;
 import java.sql.Timestamp;
 
 public class FollowPostDto {

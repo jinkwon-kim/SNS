@@ -1,4 +1,4 @@
-package com.spring.sns.dto;
+package com.spring.sns.dto.comments;
 
 public class CommentUpdateResponseDto {
 

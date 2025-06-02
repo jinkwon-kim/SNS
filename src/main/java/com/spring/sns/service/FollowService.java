@@ -1,7 +1,6 @@
 package com.spring.sns.service;
 
-import com.spring.sns.domain.Post;
-import com.spring.sns.dto.FollowPostDto;
+import com.spring.sns.dto.follows.FollowPostDto;
 import com.spring.sns.repository.FollowRepository;
 import org.springframework.stereotype.Service;
 

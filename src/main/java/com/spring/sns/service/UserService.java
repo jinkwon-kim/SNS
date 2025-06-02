@@ -1,10 +1,10 @@
 package com.spring.sns.service;
 
 import com.spring.sns.domain.User;
-import com.spring.sns.dto.UserEditRequestDto;
+import com.spring.sns.dto.users.UserEditRequestDto;
 import com.spring.sns.repository.UserRepository;
 import org.springframework.stereotype.Service;
-import com.spring.sns.dto.UserCheckResponseDto;
+import com.spring.sns.dto.users.UserCheckResponseDto;
 
 
 import java.util.Optional;
