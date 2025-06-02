@@ -1,8 +1,7 @@
 package com.spring.sns.controller;
 
 import com.spring.sns.domain.Comment;
-import com.spring.sns.dto.CommentCreateRequestDto;
-import com.spring.sns.dto.CommentCreateResponseDto;
+import com.spring.sns.dto.*;
 import com.spring.sns.service.CommentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,8 +38,38 @@ public class CommentController {
         return response;
     }
 
+    /**
+     * 댓글 조회 API
+     */
+    @GetMapping
+    public ResponseEntity<CommentListResponseDto> getCommentAPI() {
+        CommentListResponseDto responseDto = commentService.getCommentService();
+        ResponseEntity<CommentListResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
+        return response;
+    }
 
+    /**
+     * 댓글 수정 API
+     */
+    @PatchMapping("/{commentId}")
+    public ResponseEntity<CommentUpdateResponseDto> updateCommentAPI(
+            @PathVariable("commentId") Long commentId,
+            @RequestBody CommentUpdateRequestDto requestDto
+    ) {
+        CommentUpdateResponseDto responseDto = commentService.updateCommentService(commentId, requestDto);
+        ResponseEntity<CommentUpdateResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
+        return response;
+    }
 
+    /**
+     * 댓글 삭제 API
+     */
+    @DeleteMapping("/{commentId}")
+    public ResponseEntity<CommentDeleteResponseDto> deleteCommentAPI(@PathVariable("commentId") Long commentId) {
+        CommentDeleteResponseDto responseDto = commentService.deleteCommentService(commentId);
+        ResponseEntity<CommentDeleteResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
+        return response;
+    }
 
 
 }

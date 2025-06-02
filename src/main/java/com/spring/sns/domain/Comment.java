@@ -10,7 +10,8 @@ import java.time.ZoneOffset;
 public class Comment {
 
     // 속성
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
 
     @ManyToOne
@@ -28,19 +29,25 @@ public class Comment {
 
 
     // 생성자
+
     /**
      * 기본생성자(JPA에서 사용)
      */
-    public Comment() {}
+    public Comment() {
+    }
 
     public Comment(User user, String commentText) {
         this.user = user;
         this.commentText = commentText;
     }
 
+    public Comment(String commentText) {
+        this.commentText = commentText;
+    }
 
 
     // 기능
+
     /**
      * 엔티티가 처음 저장되기 직전에 호출
      * createdAt , updatedAt 필드를 현재 UTC 시간으로 초기화
@@ -51,6 +58,7 @@ public class Comment {
         this.createdAt = now;
         this.updatedAt = now;
     }
+
     /**
      * 엔티티가 수정되기 직전에 호출
      * updatedAt 필드를 현재 UTC 시간으로 초기화
@@ -75,6 +83,10 @@ public class Comment {
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
+    }
+
+    public void updateComment(String commentText) {
+        this.commentText = commentText;
     }
 
 }

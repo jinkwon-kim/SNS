@@ -8,7 +8,8 @@ import java.time.ZoneOffset;
 @Entity
 public class Post {
     // 속성
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
     @Column(name = "USER_ID", nullable = false)
@@ -51,10 +52,12 @@ public class Post {
     }
 
     // 생성자
+
     /**
      * 기본생성자(JPA에서 사용)
      */
-    public Post() {}
+    public Post() {
+    }
 
 
     // 기능

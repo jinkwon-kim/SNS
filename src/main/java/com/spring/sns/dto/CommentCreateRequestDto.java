@@ -12,7 +12,6 @@ public class CommentCreateRequestDto {
     private Long userId;
 
     // 생성자
-
     public CommentCreateRequestDto(String userName, String commentText) {
         this.userName = userName;
         this.commentText = commentText;
@@ -29,11 +28,13 @@ public class CommentCreateRequestDto {
         return commentText;
     }
 
-    /**
-     * 테스트용
-     * @return
-     */
-    public Long getUserId() {
-        return userId;
-    }
+//    /**
+//     * 테스트용
+//     * @return
+//     */
+//    public Long getUserId() {
+//        return userId;
+//    }
+
+
 }

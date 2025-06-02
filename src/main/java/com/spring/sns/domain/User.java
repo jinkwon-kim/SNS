@@ -9,7 +9,8 @@ import java.time.ZoneOffset;
 
 public class User {
     //속성
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
     @Column(nullable = false, length = 100)
@@ -52,10 +53,12 @@ public class User {
     }
 
     //생성자
+
     /**
      * 기본생성자(JPA에서 사용)
      */
-    public User() {}
+    public User() {
+    }
 
 
     //기능
