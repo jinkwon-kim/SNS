@@ -1,6 +1,8 @@
 package com.spring.sns.controller;
 
 import com.spring.sns.dto.loginDto.LoginRequestDto;
+import com.spring.sns.dto.users.UserCreateRequestDto;
+import com.spring.sns.dto.users.UserCreateResponseDto;
 import com.spring.sns.service.LoginService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,7 +62,12 @@ public class LoginController {
     /**
      * 회원가입
      */
-
+    @PostMapping
+    public ResponseEntity<UserCreateResponseDto> createUserAPI(@RequestBody UserCreateRequestDto requestDto) {
+        UserCreateResponseDto responseDto = loginService.createUserService(requestDto);
+        ResponseEntity<UserCreateResponseDto> response = new ResponseEntity<>(responseDto , HttpStatus.OK);
+        return response;
+    }
 }
 
 
