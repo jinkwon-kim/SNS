@@ -73,11 +73,16 @@ public class PostService {
     /**
      * 게시물 삭제 기능
      */
-    public void deletePostService(Long postId) {
+    public PostDeleteResponseDto deletePostService(Long postId) {
         Optional<Post> optionalPost = postRepository.findById(postId);
         if (optionalPost.isPresent()) {
             Post foundPost = optionalPost.get();
             postRepository.delete(foundPost);
+            PostDeleteResponseDto responseDto = new PostDeleteResponseDto(200);
+            return responseDto;
+        } else {
+            PostDeleteResponseDto responseDto = new PostDeleteResponseDto(400, "존재하지 않는 게시물입니다.");
+            return responseDto;
         }
     }
 }
