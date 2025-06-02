@@ -69,4 +69,15 @@ public class PostService {
             return null;
         }
     }
+
+    /**
+     * 게시물 삭제 기능
+     */
+    public void deletePostService(Long postId) {
+        Optional<Post> optionalPost = postRepository.findById(postId);
+        if (optionalPost.isPresent()) {
+            Post foundPost = optionalPost.get();
+            postRepository.delete(foundPost);
+        }
+    }
 }

@@ -57,4 +57,14 @@ public class PostController {
         ResponseEntity<PostUpdateResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
         return response;
     }
+
+    /**
+     * 게시물 삭제 API
+     */
+    @DeleteMapping("/{postId}")
+    public ResponseEntity<String> deletePostAPI(@PathVariable("postId") Long postId) {
+        postService.deletePostService(postId);
+        ResponseEntity<String> response = new ResponseEntity<>("deleted" , HttpStatus.OK);
+        return response;
+    }
 }
