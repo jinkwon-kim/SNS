@@ -58,12 +58,11 @@ public class User {
      */
     public User() {}
 
-    public User(UserCreateRequestDto dto) {
-        this.userEmail = dto.getUserEmail();
-        this.password = dto.getPassword();
-        this.username = dto.getUsername();
-        this.content = dto.getContent();
-
+    public User(String userEmail, String password, String username, String content) {
+        this.userEmail = userEmail;
+        this.password = password;  // 암호화된 값이 여기 들어와야 함!
+        this.username = username;
+        this.content = content;
     }
     //기능
 

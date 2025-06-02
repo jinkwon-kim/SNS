@@ -69,7 +69,10 @@ public class LoginService {
         String encodedPassword = passwordEncoder.encode(requestDto.getPassword());
 
         // User 객체 생성 시 암호화된 비밀번호로 세팅
-        User user = new User(
+        User user = new User(requestDto.getUserEmail(),
+                encodedPassword,
+                requestDto.getUsername(),
+                requestDto.getContent()
         );
 
         User saveUser = loginRepository.save(user);
