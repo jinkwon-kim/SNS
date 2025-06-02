@@ -1,5 +1,6 @@
 package com.spring.sns.service;
 
+import com.spring.sns.domain.Post;
 import com.spring.sns.repository.FollowRepository;
 import org.springframework.stereotype.Service;
 
@@ -35,4 +36,12 @@ public class FollowService {
     public List<Long> getFollowList(Long userid) {
         return followRepository.getFollowList(userid);
     }
+
+    //친구 게시물 조회
+    public List<Post> getFriendPost(Long userid){
+        List<Long> followids = followRepository.getFollowList(userid);
+        return followRepository.getFollowPost(followids);
+    }
+
+
 }
