@@ -45,9 +45,25 @@ public class PostService {
      */
     public PostDetailResponseDto getPostDetailService(Long postId) {
         Optional<Post> optionalPost = postRepository.findById(postId);
-        if(optionalPost.isPresent()) {
+        if (optionalPost.isPresent()) {
             Post fountPost = optionalPost.get();
             PostDetailResponseDto responseDto = new PostDetailResponseDto(fountPost);
+            return responseDto;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 게시물 수정 기능
+     */
+    public PostUpdateResponseDto updatePostService(Long postid, PostUpdateRequestDto requestDto) {
+        Optional<Post> optionalPost = postRepository.findById(postid);
+        if (optionalPost.isPresent()) {
+            Post foundPost = optionalPost.get();
+            foundPost.updatePost(requestDto);
+            Post savePost = postRepository.save(foundPost);
+            PostUpdateResponseDto responseDto = new PostUpdateResponseDto(savePost);
             return responseDto;
         } else {
             return null;

@@ -1,6 +1,7 @@
 package com.spring.sns.domain;
 
 import com.spring.sns.dto.posts.PostCreateRequestDto;
+import com.spring.sns.dto.posts.PostUpdateRequestDto;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -67,6 +68,15 @@ public class Post {
     }
 
     // 기능
+
+    /**
+     * 수정 기능
+     */
+    public void updatePost(PostUpdateRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+    }
+
     // 게터
 
 

@@ -1,9 +1,6 @@
 package com.spring.sns.controller;
 
-import com.spring.sns.dto.posts.PostCreateRequestDto;
-import com.spring.sns.dto.posts.PostCreateResponseDto;
-import com.spring.sns.dto.posts.PostDetailResponseDto;
-import com.spring.sns.dto.posts.PostListResponseDto;
+import com.spring.sns.dto.posts.*;
 import com.spring.sns.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,4 +48,13 @@ public class PostController {
         return response;
     }
 
+    /**
+     * 게시물 수정 API
+     */
+    @PatchMapping("/{postId}")
+    public ResponseEntity<PostUpdateResponseDto> updatePostAPI(@PathVariable("postId") Long postId , @RequestBody PostUpdateRequestDto requestDto) {
+        PostUpdateResponseDto responseDto = postService.updatePostService(postId, requestDto);
+        ResponseEntity<PostUpdateResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
+        return response;
+    }
 }
