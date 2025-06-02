@@ -1,5 +1,6 @@
 package com.spring.sns.domain;
 
+
 import com.spring.sns.dto.users.UserCreateRequestDto;
 import jakarta.persistence.*;
 
@@ -13,7 +14,7 @@ public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, name = "user_email")
     private String userEmail;
 
     @Column(nullable = false)
@@ -73,6 +74,10 @@ public class User {
 
     public String getUserEmail() {
         return userEmail;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getUsername() {
