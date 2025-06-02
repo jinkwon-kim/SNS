@@ -2,6 +2,7 @@ package com.spring.sns.controller;
 
 import com.spring.sns.dto.posts.PostCreateRequestDto;
 import com.spring.sns.dto.posts.PostCreateResponseDto;
+import com.spring.sns.dto.posts.PostDetailResponseDto;
 import com.spring.sns.dto.posts.PostListResponseDto;
 import com.spring.sns.service.PostService;
 import org.springframework.http.HttpStatus;
@@ -44,8 +45,10 @@ public class PostController {
      * 게시물 단건 조회 API
      */
     @GetMapping("/{postId}")
-    public ResponseEntity<String> getPostDetailAPI(@PathVariable("postId") Long postId) {
-        ResponseEntity<String> response = new ResponseEntity<>("success" , HttpStatus.OK);
+    public ResponseEntity<PostDetailResponseDto> getPostDetailAPI(@PathVariable("postId") Long postId) {
+        PostDetailResponseDto responseDto = postService.getPostDetailService(postId);
+        ResponseEntity<PostDetailResponseDto> response = new ResponseEntity<>(responseDto , HttpStatus.OK);
         return response;
     }
+
 }
