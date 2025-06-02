@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Entity
+@Table(name = "follows")
 public class Follow {
     // 속성
     @Id
