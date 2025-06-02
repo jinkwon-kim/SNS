@@ -46,5 +46,20 @@ public class LoginService {
 
         System.out.println("로그아웃 처리 완료: " + userEmail);
     }
+    //회원탈퇴처리
+    @Transactional
+    public void deleteUser(LoginRequestDto dto) {
+        String userEmail = dto.getUserEmail();
+        String password = dto.getPassword();
+
+        User user = loginRepository.findByUserEmail(userEmail)
+                .orElseThrow(() -> new RuntimeException("유저를 찾을 수 없습니다."));
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new RuntimeException("비밀번호 불일치로 탈퇴 실패");
+        }
+
+        loginRepository.delete(user);
+    }
     }
 

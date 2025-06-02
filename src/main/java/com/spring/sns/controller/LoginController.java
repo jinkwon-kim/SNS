@@ -43,6 +43,18 @@ public class LoginController {
             return ResponseEntity.status(400).body("로그아웃 실패: " + e.getMessage());
         }
     }
+    /**
+     * 회원 탈퇴
+     */
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteUser(@RequestBody LoginRequestDto dto) {
+        try {
+            loginService.deleteUser(dto);
+            return ResponseEntity.ok("회원탈퇴 완료");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(400).body("회원탈퇴 실패: " + e.getMessage());
+        }
+    }
 }
 
 
