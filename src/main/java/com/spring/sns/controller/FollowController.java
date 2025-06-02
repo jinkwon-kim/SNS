@@ -16,6 +16,8 @@ public class FollowController {
     2.친구 언팔로우 (delete)
     3.친구 목록 조회 (get)
      */
+    //INSERT INTO users (user_email, password, user_name, content) VALUES ('test@example.com', 'password123', 'testuser', '테스트 유저'); 유저 주입
+    //SELECT user_id, user_email, user_name FROM users WHERE user_email = 'test@example.com'; email 입력시 유저 id확인 가능
     private final FollowService followService;
     private final FollowRepository followRepository;
 
@@ -47,9 +49,9 @@ public class FollowController {
     }
 
     //팔로잉한 사람의 게시물 즈회
-    @GetMapping("/{userid}/follow/feed")
-    public ResponseEntity<List<FollowPostDto>> getFollowFeed(@PathVariable Long userid) {
-        List<FollowPostDto> feed = followService.getFollowFeed(userid);
+    @GetMapping("/{targetid}/follow/feed")
+    public ResponseEntity<List<FollowPostDto>> getFollowFeed(@PathVariable Long targetid) {
+        List<FollowPostDto> feed = followService.getFollowFeed(targetid);
         return ResponseEntity.ok(feed);
     }
 
