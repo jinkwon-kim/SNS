@@ -33,7 +33,4 @@ public class UserController {
         ResponseEntity<UserCheckResponseDto> response = new ResponseEntity<>(UserService, HttpStatus.OK);
         return response;
     }
-
-
-
 }

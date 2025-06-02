@@ -6,9 +6,13 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Entity
+
+@Table(name = "follows")
 public class Follow {
     // 속성
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
 
     @Column(name = "USER_ID", nullable = false)
@@ -31,10 +35,14 @@ public class Follow {
     }
 
     // 생성자
+
+
     /**
      * 기본생성자(JPA에서 사용)
      */
-    public Follow() {}
+    public Follow() {
+    }
+
 
 
     // 기능
