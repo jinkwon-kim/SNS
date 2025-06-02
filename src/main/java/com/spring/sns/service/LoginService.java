@@ -26,7 +26,7 @@ public class LoginService {
 
     //로그인 처리
     @Transactional
-    public String login (LoginRequestDto requestDto) {
+    public User login (LoginRequestDto requestDto) {
         //데이터 준비
         String userEmail = requestDto.getUserEmail();
         String password = requestDto.getPassword();
@@ -38,7 +38,7 @@ public class LoginService {
             throw new RuntimeException("비밀번호가 일치하지 않습니다.");
         }
         //로그인 성공
-        return "로그인 성공";
+        return user;
     }
     //로그아웃처리
     @Transactional
