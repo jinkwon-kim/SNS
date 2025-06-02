@@ -1,16 +1,11 @@
 package com.spring.sns.service;
 
 import com.spring.sns.domain.Comment;
-import com.spring.sns.domain.User;
-import com.spring.sns.dto.*;
+import com.spring.sns.dto.comments.*;
 import com.spring.sns.repository.CommentRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

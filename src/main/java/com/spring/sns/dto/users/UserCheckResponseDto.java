@@ -1,10 +1,10 @@
-package com.spring.sns.dto;
+package com.spring.sns.dto.users;
 
 import com.spring.sns.domain.User;
 
 import java.time.LocalDateTime;
 
-public class UserEditResponseDto {
+public class UserCheckResponseDto {
     // 속성
     private Long id;
     private String userEmail;
@@ -14,7 +14,7 @@ public class UserEditResponseDto {
     private LocalDateTime updatedAt;
 
     // 생성자
-    public UserEditResponseDto(User user) {
+    public UserCheckResponseDto(User user) {
         this.id = getId();
         this.userEmail = getUserEmail();
         this.content = getContent();

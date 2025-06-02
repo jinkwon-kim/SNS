@@ -1,9 +1,7 @@
 package com.spring.sns.repository;
 
-import com.spring.sns.domain.Post;
-import com.spring.sns.dto.FollowPostDto;
+import com.spring.sns.dto.follows.FollowPostDto;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

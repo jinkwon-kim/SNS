@@ -1,7 +1,6 @@
 package com.spring.sns.controller;
 
-import com.spring.sns.domain.Comment;
-import com.spring.sns.dto.*;
+import com.spring.sns.dto.comments.*;
 import com.spring.sns.service.CommentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
