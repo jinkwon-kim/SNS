@@ -8,7 +8,8 @@ public class UserCreateRequestDto {
     private String content;
 
     // 생성자
-
+    public UserCreateRequestDto() {
+    }
 
     // 기능
     // 게터

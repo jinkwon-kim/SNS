@@ -19,7 +19,7 @@ public class UserGetProfileResponseDto {
     public UserGetProfileResponseDto(User user) {
         this.userId = user.getUserId();
         this.userEmail = user.getUserEmail();
-        this.userName = user.getUsername();
+        this.userName = user.getUserName();
         this.content = user.getContent();
         this.createdAt = user.getCreatedAt();
         this.updatedAt = user.getUpdatedAt();
