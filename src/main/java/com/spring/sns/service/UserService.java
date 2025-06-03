@@ -23,17 +23,17 @@ public class UserService {
     /**
      * 유저 단건 조회 API
      */
-    public Object getProfileService(int userId) {
+    public Object getProfileService(Long userId) {
         Object result = userRepo.findById(userId);
         return result;
     }
     //유저 패스워드 수정
-    public void editUserPw(int id, String nowPw, String editPw) {
+    public void editUserPw(Long id, String nowPw, String editPw) {
         userRepo.editUserPw(id, nowPw, editPw);
     }
 
     //회원 수정
-    public void updateUserProf (int userId, String email, String name, String content) {
+    public void updateUserProf (Long userId, String email, String name, String content) {
         userRepo.updateUserProf(userId, email, name, content);
     }
 }

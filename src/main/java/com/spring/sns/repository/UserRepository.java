@@ -6,14 +6,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class UserRepository {
     JdbcTemplate jdbc = new JdbcTemplate();
-    public Object findById (int userId) {
+    public Object findById (Long userId) {
         String sql1 = "SELECT * FROM users WHERE user_id=?";
         Object result = jdbc.queryForObject(sql1, Object.class, userId);
 
         return result;
     }
 
-    public void editUserPw(int id, String nowPw, String editPw) {
+    public void editUserPw(Long id, String nowPw, String editPw) {
 
 /*
 *비밀번호 수정
@@ -40,7 +40,7 @@ public class UserRepository {
     /*
      *회원정보 수정
      */
-    public void updateUserProf(int userId, String email, String name, String content) {
+    public void updateUserProf(Long userId, String email, String name, String content) {
         String sql1 = "UPDATE users SET email=?, name=?, content=? WHERE user_id=?";
 
         jdbc.update(sql1, email, name, content, userId);

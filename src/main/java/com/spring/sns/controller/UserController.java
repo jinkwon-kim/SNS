@@ -23,21 +23,21 @@ public class UserController {
 
     // 회원수정
     @PatchMapping("/{userId}")
-    public ResponseEntity<String> updateUserProf(@RequestParam("userId") int userId, @RequestParam("email") String email, @RequestParam("name") String name, @RequestParam("content") String content) {
+    public ResponseEntity<String> updateUserProf(@RequestParam("userId") Long userId, @PathVariable("email") String email, @PathVariable("name") String name, @PathVariable("content") String content) {
         userService.updateUserProf(userId, email, name, content);
         ResponseEntity<String> response = new ResponseEntity<>("success", HttpStatus.OK);
         return response;
     }
     //비밀번호 수정
     @PatchMapping("/{userId}")
-    public ResponseEntity<String> editUserPw(@RequestParam("userId") int id, @RequestParam("nowPw") String nowPw, @RequestParam("editPw") String editPw) {
+    public ResponseEntity<String> editUserPw(@RequestParam("userId") Long id, @PathVariable("nowPw") String nowPw, @PathVariable("editPw") String editPw) {
         userService.editUserPw(id, nowPw, editPw);
         ResponseEntity<String> response = new ResponseEntity<>("success", HttpStatus.OK);
         return response;
     }
     // 유저 단건 조회
     @GetMapping("/{userId}")
-    public ResponseEntity<Object> getUserProfile1(@PathVariable("userId") int userId) {
+    public ResponseEntity<Object> getUserProfile1(@PathVariable Long userId) {
         Object result = userService.getProfileService(userId);
         ResponseEntity<Object> response = new ResponseEntity<>(result, HttpStatus.OK);
         return response;
