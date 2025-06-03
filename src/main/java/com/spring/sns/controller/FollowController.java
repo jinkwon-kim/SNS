@@ -2,6 +2,7 @@ package com.spring.sns.controller;
 
 import com.spring.sns.dto.follows.FollowPostDto;
 import com.spring.sns.dto.loginDto.FollowLogin;
+
 import com.spring.sns.repository.FollowRepository;
 import com.spring.sns.service.FollowService;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+
 @RequestMapping("/follows")
+
 public class FollowController {
     /*
     1.친구 팔로우 (post)
@@ -31,9 +34,11 @@ public class FollowController {
     //1.친구 팔로우
     @PostMapping("/{userid}/follow/{targetid}")
     public ResponseEntity<String> followtarget(@PathVariable Long userid, @PathVariable Long targetid) {
+
         if (FollowLogin.LoginState.isLoggedIn != 1) {
             return ResponseEntity.status(401).body("로그인이 필요합니다.");
         }
+
         followService.followTarget(userid, targetid);
         return ResponseEntity.ok("팔로우가 정상적으로 처리되었습니다");
     }
@@ -41,9 +46,11 @@ public class FollowController {
     //친구 언팔
     @DeleteMapping("/{userid}/follow/{targetid}")
     public ResponseEntity<String> unfollowtarget(@PathVariable Long userid, @PathVariable Long targetid) {
+
         if (FollowLogin.LoginState.isLoggedIn != 1) {
             return ResponseEntity.status(401).body("로그인이 필요합니다.");
         }
+=======
         followService.unfollowTarget(userid, targetid);
         return ResponseEntity.ok("언팔로우가 정상적으로 처리되었습니다");
     }
@@ -54,16 +61,19 @@ public class FollowController {
         if (FollowLogin.LoginState.isLoggedIn != 1) {
             return ResponseEntity.status(401).body("로그인이 필요합니다.");
         }
+
         List<Long> followList = followService.getFollowList(userid);
         return ResponseEntity.ok(followList);
     }
 
     //팔로잉한 사람의 게시물 즈회
     @GetMapping("/{targetid}/follow/feed")
+
     public ResponseEntity<?> getFollowFeed(@PathVariable Long targetid) {
         if (FollowLogin.LoginState.isLoggedIn != 1) {
             return ResponseEntity.status(401).body("로그인이 필요합니다.");
         }
+
         List<FollowPostDto> feed = followService.getFollowFeed(targetid);
         return ResponseEntity.ok(feed);
     }
