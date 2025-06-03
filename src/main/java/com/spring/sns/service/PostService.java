@@ -4,6 +4,10 @@ import com.spring.sns.domain.Post;
 import com.spring.sns.dto.posts.*;
 import com.spring.sns.repository.PostRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,9 +39,14 @@ public class PostService {
     /**
      * 게시물 전체 조회 기능
      */
-    public PostListResponseDto getPostListService() {
-        List<Post> postList = postRepository.findAll();
-        List<PostListDto> postListDtoList = postList.stream().map(PostListDto::new).collect(Collectors.toList());
+    public PostListResponseDto getPostListService(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
+        Page<Post> postPage = postRepository.findAll(pageable);
+
+        List<PostListDto> postListDtoList = postPage.getContent().stream()
+                .map(PostListDto::new)
+                .collect(Collectors.toList());
+
         PostListResponseDto responseDto = new PostListResponseDto(postListDtoList);
         return responseDto;
     }
