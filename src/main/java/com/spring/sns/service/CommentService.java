@@ -31,15 +31,13 @@ public class CommentService {
     public CommentCreateResponseDto createCommentService(CommentCreateRequestDto requestDto) {
 
         // 1. 데이터 준비
-//        User user = new User();
-//        user.setUserId(requestDto.getUserId());
-//        user.setUserEmail("test@example.com");
-//        String commentText = requestDto.getCommentText();
-
         String commentText = requestDto.getCommentText();
 
+
         // 2. 검증로직 작성(필요시)
-//        if ~
+        if (commentText == null || commentText.trim().isEmpty()) {
+            throw new IllegalArgumentException("내용을 입력해 주세요.");
+        }
 
         // 3. 엔티티 만들기
         Comment comment = new Comment(commentText);
@@ -88,10 +86,15 @@ public class CommentService {
         String commentText = requestDto.getCommentText();
 
         // 검증로직 작성
+        if (commentText == null || commentText.trim().isEmpty()) {
+            throw new IllegalArgumentException("내용을 입력해 주세요.");
+        }
 
         // 수정할 대상 조회
         Optional<Comment> commentOptional = commentRepository.findById(commentId);
-        if (commentOptional.isPresent()) {
+        if (!commentOptional.isPresent()) {
+            throw new IllegalArgumentException("수정할 댓글이 존재하지 않습니다.");
+        } else {
             Comment foundComment = commentOptional.get();
 
             // 업데이트
@@ -102,9 +105,6 @@ public class CommentService {
 
             // responseDto 반환
             return responseDto;
-
-        } else {
-            return null;
         }
 
     }
@@ -116,7 +116,10 @@ public class CommentService {
 
         // 데이터 준비
         Optional<Comment> commentOptional = commentRepository.findById(commentId);
-        if (commentOptional.isPresent()) {
+        if (!commentOptional.isPresent()) {
+            throw new IllegalArgumentException("삭제할 댓글이 존재하지 않습니다,");
+
+        } else {
             Comment comment = commentOptional.get();
 
             // 삭제
@@ -127,8 +130,6 @@ public class CommentService {
 
             // responseDto 반환
             return responseDto;
-        } else {
-            return null;
         }
 
 

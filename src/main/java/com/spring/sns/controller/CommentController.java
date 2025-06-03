@@ -26,15 +26,15 @@ public class CommentController {
      * 댓글 생성 API
      */
     @PostMapping
-    public ResponseEntity<CommentCreateResponseDto> createCommentAPI(@RequestBody CommentCreateRequestDto requestDto) {
-//        String userName = requestDto.getUserName();
-//        String commentText = requestDto.getCommentText();
-//        System.out.println("userName = " + userName);
-//        System.out.println("commentText = " + commentText); -> 테스트
-
-        CommentCreateResponseDto responseDto = commentService.createCommentService(requestDto);
-        ResponseEntity<CommentCreateResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
-        return response;
+    public ResponseEntity<?> createCommentAPI(@RequestBody CommentCreateRequestDto requestDto) {
+        try {
+            CommentCreateResponseDto responseDto = commentService.createCommentService(requestDto);
+            ResponseEntity<CommentCreateResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
+            return response;
+        } catch (IllegalArgumentException illegalArgumentException) {
+            ResponseEntity<String> response = new ResponseEntity<>(illegalArgumentException.getMessage(), HttpStatus.BAD_REQUEST);
+            return response;
+        }
     }
 
     /**
@@ -51,23 +51,34 @@ public class CommentController {
      * 댓글 수정 API
      */
     @PatchMapping("/{commentId}")
-    public ResponseEntity<CommentUpdateResponseDto> updateCommentAPI(
+    public ResponseEntity<?> updateCommentAPI(
             @PathVariable("commentId") Long commentId,
             @RequestBody CommentUpdateRequestDto requestDto
     ) {
-        CommentUpdateResponseDto responseDto = commentService.updateCommentService(commentId, requestDto);
-        ResponseEntity<CommentUpdateResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
-        return response;
+        try {
+            CommentUpdateResponseDto responseDto = commentService.updateCommentService(commentId, requestDto);
+            ResponseEntity<CommentUpdateResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
+            return response;
+        } catch (IllegalArgumentException illegalArgumentException) {
+            ResponseEntity<String> response = new ResponseEntity<>(illegalArgumentException.getMessage(), HttpStatus.BAD_REQUEST);
+            return response;
+        }
     }
 
     /**
      * 댓글 삭제 API
      */
     @DeleteMapping("/{commentId}")
-    public ResponseEntity<CommentDeleteResponseDto> deleteCommentAPI(@PathVariable("commentId") Long commentId) {
-        CommentDeleteResponseDto responseDto = commentService.deleteCommentService(commentId);
-        ResponseEntity<CommentDeleteResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
-        return response;
+    public ResponseEntity<?> deleteCommentAPI(@PathVariable("commentId") Long commentId) {
+        try {
+            CommentDeleteResponseDto responseDto = commentService.deleteCommentService(commentId);
+            ResponseEntity<CommentDeleteResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
+            return response;
+        } catch (IllegalArgumentException illegalArgumentException) {
+            ResponseEntity<String> response = new ResponseEntity<>(illegalArgumentException.getMessage(), HttpStatus.BAD_REQUEST);
+            return response;
+        }
+
     }
 
 

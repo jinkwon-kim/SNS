@@ -28,13 +28,6 @@ public class CommentCreateRequestDto {
         return commentText;
     }
 
-//    /**
-//     * 테스트용
-//     * @return
-//     */
-//    public Long getUserId() {
-//        return userId;
-//    }
 
 
 }
