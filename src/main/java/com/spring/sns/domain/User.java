@@ -65,11 +65,11 @@ public class User {
     public User() {
     }
 
-    public User(UserCreateRequestDto requestDto){
-        this.userEmail = requestDto.getUserEmail();
-        this.password = requestDto.getPassword();
-        this.userName = requestDto.getUserName();
-        this.content = requestDto.getContent();
+    public User(String userEmail, String password, String userName, String content) {
+        this.userEmail = userEmail;
+        this.password = password;
+        this.userName = userName;
+        this.content = content;
     }
 
 
@@ -87,7 +87,7 @@ public class User {
         return password;
     }
 
-    public String getUsername() {
+    public String getUserName() {
         return userName;
     }
 

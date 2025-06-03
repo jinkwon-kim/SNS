@@ -26,7 +26,7 @@ public class LoginService {
 
     //로그인 처리
     @Transactional
-    public String login (LoginRequestDto requestDto) {
+    public User login (LoginRequestDto requestDto) {
         //데이터 준비
         String userEmail = requestDto.getUserEmail();
         String password = requestDto.getPassword();
@@ -38,7 +38,7 @@ public class LoginService {
             throw new RuntimeException("비밀번호가 일치하지 않습니다.");
         }
         //로그인 성공
-        return "로그인 성공";
+        return user;
     }
     //로그아웃처리
     @Transactional
@@ -64,13 +64,22 @@ public class LoginService {
         loginRepository.delete(user);
     }
     //회원 가입 처리
+    @Transactional
     public UserCreateResponseDto createUserService(UserCreateRequestDto requestDto) {
+        //매일 중복 확인
+        if (loginRepository.existsByUserEmail(requestDto.getUserEmail())) {
+            throw new IllegalArgumentException("이미 사용 중인 이메일입니다.");
+        }
         // 비밀번호 암호화
         String encodedPassword = passwordEncoder.encode(requestDto.getPassword());
 
         // User 객체 생성 시 암호화된 비밀번호로 세팅
-        User user = new User(requestDto);
-
+        User user = new User(
+                requestDto.getUserEmail(),
+                encodedPassword,
+                requestDto.getUserName(),
+                requestDto.getContent()
+        );
         User saveUser = loginRepository.save(user);
         return new UserCreateResponseDto(saveUser);
     }
