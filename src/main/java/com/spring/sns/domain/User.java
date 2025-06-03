@@ -2,6 +2,7 @@ package com.spring.sns.domain;
 
 
 import com.spring.sns.dto.users.UserCreateRequestDto;
+import com.spring.sns.dto.users.UserEditRequestDto;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -74,6 +75,11 @@ public class User {
 
 
     // 기능
+    public void updateUser(UserEditRequestDto requestDto) {
+        this.userName = requestDto.getUserName();
+        this.content = requestDto.getContent();
+    }
+
     // 게터
     public Long getUserId() {
         return userId;
