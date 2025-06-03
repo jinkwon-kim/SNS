@@ -1,4 +1,4 @@
-package com.spring.sns.dto.users;
+package com.spring.sns.dto;
 
 public class UserCheckRequestDto {
     private Long id;

@@ -1,4 +1,4 @@
-package com.spring.sns.dto.users;
+package com.spring.sns.dto;
 
 public class UserEditRequestDto {
     //속성
