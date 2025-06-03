@@ -1,6 +1,7 @@
 package com.spring.sns.controller;
 
 import com.spring.sns.dto.users.UserCheckResponseDto;
+import com.spring.sns.dto.users.UserEditRequestDto;
 import com.spring.sns.dto.users.UserEditResponseDto;
 import com.spring.sns.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -19,18 +20,19 @@ public class UserController {
     }
 
     // 기능
-
-    // 회원수정
-    @PatchMapping
-    public ResponseEntity<String> updateUserAPI(@PathVariable("userId") Long userId, @RequestBody UserEditResponseDto requestDto) {
-        ResponseEntity<String> response = new ResponseEntity<>("success", HttpStatus.OK);
-        return response;
-    }
-    // 유저 단건 조회
     @GetMapping("/{userId}")
-    public ResponseEntity<UserCheckResponseDto> getUserService(@PathVariable("userId") Long userId) {
-        UserCheckResponseDto UserService = userService.getProfileService(userId);
-        ResponseEntity<UserCheckResponseDto> response = new ResponseEntity<>(UserService, HttpStatus.OK);
+    public ResponseEntity<UserEditResponseDto> getUserAPI(@PathVariable("userId") Long userId) {
+        UserEditResponseDto responseDto = userService.getUserService(userId);
+        ResponseEntity<UserEditResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
         return response;
     }
+
+    @PatchMapping("/{userId}")
+    public ResponseEntity<UserEditResponseDto> updateUserAPI(@PathVariable("userId") Long userId , @RequestBody UserEditRequestDto requestDto) {
+        UserEditResponseDto responseDto = userService.updateUserService(userId, requestDto);
+        ResponseEntity<UserEditResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
+        return response;
+    }
+
+
 }

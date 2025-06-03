@@ -15,12 +15,12 @@ public class UserEditResponseDto {
 
     // 생성자
     public UserEditResponseDto(User user) {
-        this.id = getId();
-        this.userEmail = getUserEmail();
-        this.content = getContent();
-        this.userName = getUserName();
-        this.createdAt = getCreatedAt();
-        this.updatedAt = getUpdatedAt();
+        this.id = user.getUserId();
+        this.userEmail = user.getUserEmail();
+        this.content = user.getContent();
+        this.userName = user.getUserName();
+        this.createdAt = user.getCreatedAt();
+        this.updatedAt = user.getUpdatedAt();
     }
 
     // 기능

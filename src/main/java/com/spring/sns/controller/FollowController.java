@@ -50,7 +50,6 @@ public class FollowController {
         if (FollowLogin.LoginState.isLoggedIn != 1) {
             return ResponseEntity.status(401).body("로그인이 필요합니다.");
         }
-=======
         followService.unfollowTarget(userid, targetid);
         return ResponseEntity.ok("언팔로우가 정상적으로 처리되었습니다");
     }
