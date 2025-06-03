@@ -32,8 +32,10 @@ public class PostController {
      * 게시물 전체 조회 API
      */
     @GetMapping
-    public ResponseEntity<PostListResponseDto> getPostListAPI() {
-        PostListResponseDto responseDto = postService.getPostListService();
+    public ResponseEntity<PostListResponseDto> getPostListAPI(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PostListResponseDto responseDto = postService.getPostListService(page, size);
         ResponseEntity<PostListResponseDto> response = new ResponseEntity<>(responseDto , HttpStatus.OK);
         return response;
     }
