@@ -1,6 +1,9 @@
 package com.spring.sns.controller;
 
 import com.spring.sns.domain.User;
+
+import com.spring.sns.dto.loginDto.FollowLogin;
+
 import com.spring.sns.dto.loginDto.LoginRequestDto;
 import com.spring.sns.dto.users.UserCreateRequestDto;
 import com.spring.sns.dto.users.UserCreateResponseDto;
@@ -43,6 +46,10 @@ public class LoginController {
             // 유효성 검증 + 사용자 조회
             User user = loginService.login(dto);
 
+
+            //로그인 성공 시
+            FollowLogin.LoginState.isLoggedIn = 1;
+
             // JWT 생성
             String token = Jwts.builder()
                     .setSubject(user.getUserEmail())
@@ -72,6 +79,9 @@ public class LoginController {
     @PostMapping("/logout")
     public ResponseEntity<String> logout(@RequestParam String userEmail) {
         try {
+
+            FollowLogin.LoginState.isLoggedIn = 0;
+
             loginService.logout(userEmail);
             return ResponseEntity.ok("로그아웃 성공");
         } catch (RuntimeException e) {
