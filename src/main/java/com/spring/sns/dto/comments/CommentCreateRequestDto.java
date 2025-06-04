@@ -9,7 +9,7 @@ public class CommentCreateRequestDto {
     /**
      * 테스트용
      */
-    private Long userId;
+    //private Long userId;
 
     // 생성자
     public CommentCreateRequestDto(String userName, String commentText) {
