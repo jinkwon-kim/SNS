@@ -3,10 +3,12 @@ package com.spring.sns.dto.posts;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 public class PostDeleteResponseDto {
+    // 속성
     private int status;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String message;
 
+    // 생성자
     public PostDeleteResponseDto(int status) {
         this.status = status;
     }
@@ -16,6 +18,7 @@ public class PostDeleteResponseDto {
         this.message = message;
     }
 
+    // 기능
     public int getStatus() {
         return status;
     }

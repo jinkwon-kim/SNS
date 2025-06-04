@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 public class PostCreateResponseDto {
     // 속성
     private Long postId;
-//    private Long userId;
     private String title;
     private String content;
     private String userName;

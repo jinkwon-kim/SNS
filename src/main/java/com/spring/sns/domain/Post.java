@@ -1,6 +1,5 @@
 package com.spring.sns.domain;
 
-
 import com.spring.sns.dto.posts.PostCreateRequestDto;
 import com.spring.sns.dto.posts.PostUpdateRequestDto;
 import jakarta.persistence.*;
@@ -9,18 +8,12 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Entity
-
 @Table(name = "posts")
 public class Post {
     // 속성
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
-
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
-
 
     @Column(nullable = false, length = 100)
     private String title;
@@ -59,7 +52,6 @@ public class Post {
     }
 
     // 생성자
-
     /**
      * 기본생성자(JPA에서 사용)
      */
@@ -73,7 +65,6 @@ public class Post {
     }
 
     // 기능
-
     /**
      * 수정 기능
      */
@@ -83,8 +74,6 @@ public class Post {
     }
 
     // 게터
-
-
     public Long getPostId() {
         return postId;
     }

@@ -2,6 +2,7 @@ package com.spring.sns.dto.follows;
 import java.sql.Timestamp;
 
 public class FollowPostDto {
+    // 속성
     private Long postId;
     private Long userId;
     private String title;
@@ -10,6 +11,7 @@ public class FollowPostDto {
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
+    //기능
     public Long getPostId() { return postId; }
     public void setPostId(Long postId) { this.postId = postId; }
 

@@ -4,7 +4,6 @@ package com.spring.sns.dto.loginDto;
 public class LoginRequestDto {
     //속성
     private String userEmail;
-
     private String password;
 
     //생성자

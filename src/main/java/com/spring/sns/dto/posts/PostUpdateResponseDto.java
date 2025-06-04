@@ -14,8 +14,6 @@ public class PostUpdateResponseDto {
     private LocalDateTime updatedAt;
 
     // 생성자
-
-
     public PostUpdateResponseDto(Post post) {
         this.postId = post.getPostId();
         this.title = post.getTitle();
