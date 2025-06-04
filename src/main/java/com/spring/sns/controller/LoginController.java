@@ -20,7 +20,6 @@ import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
-
 @RestController
 @RequestMapping("/auth")
 public class LoginController {
@@ -30,13 +29,13 @@ public class LoginController {
             "xA7bS8p3Wj6nKdL0gZf2QeX9UvHcRyTmBpNcLrVoYiEjTsMwZqFtGhAkDsPlMzXcN"
                     .getBytes(StandardCharsets.UTF_8));
     private final long EXPIRATION_TIME = 60 * 60 * 1000 * 2; // 유효기간 2시간
+
     //생성자
     public LoginController(LoginService loginService) {
         this.loginService = loginService;
     }
 
     //기능
-
     /**
      * 로그인 API
      */
@@ -72,7 +71,6 @@ public class LoginController {
         }
     }
 
-
     /**
      * 로그아웃 API
      */
@@ -88,6 +86,7 @@ public class LoginController {
             return ResponseEntity.status(400).body("로그아웃 실패: " + e.getMessage());
         }
     }
+
     /**
      * 회원 탈퇴
      */
@@ -100,6 +99,7 @@ public class LoginController {
             return ResponseEntity.status(400).body("회원탈퇴 실패: " + e.getMessage());
         }
     }
+
     /**
      * 회원가입
      */

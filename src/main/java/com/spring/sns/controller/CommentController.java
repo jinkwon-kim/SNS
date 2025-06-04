@@ -9,19 +9,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/comments")
 public class CommentController {
-
     // 속성
     private final CommentService commentService;
-
 
     // 생성자
     public CommentController(CommentService commentService) {
         this.commentService = commentService;
     }
 
-
     // 기능
-
     /**
      * 댓글 생성 API
      */
@@ -78,8 +74,5 @@ public class CommentController {
             ResponseEntity<String> response = new ResponseEntity<>(illegalArgumentException.getMessage(), HttpStatus.BAD_REQUEST);
             return response;
         }
-
     }
-
-
 }

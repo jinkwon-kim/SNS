@@ -1,16 +1,13 @@
 package com.spring.sns.domain;
 
-
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
 @Entity
-
 @Table(name = "comments")
 public class Comment {
-
     // 속성
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +16,6 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "user_id") // FK 설정: comment 테이블에 user_id 라는 컬럼 만들고, 이 컬럼을 user 테이블 id와 연결
     private User user;
-
 
     @Column(nullable = false)
     private String commentText;
@@ -31,7 +27,6 @@ public class Comment {
     private LocalDateTime updatedAt;
 
     // 생성자
-
     /**
      * 기본생성자(JPA에서 사용)
      */
@@ -47,10 +42,7 @@ public class Comment {
         this.commentText = commentText;
     }
 
-
     // 기능
-
-
     /**
      * 엔티티가 처음 저장되기 직전에 호출
      * createdAt , updatedAt 필드를 현재 UTC 시간으로 초기화
@@ -71,6 +63,7 @@ public class Comment {
         this.updatedAt = now;
     }
 
+    // 게터
     public Long getCommentId() {
         return commentId;
     }

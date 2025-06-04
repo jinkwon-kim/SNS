@@ -20,6 +20,9 @@ public class UserController {
     }
 
     // 기능
+    /**
+     * 유저 정보 조회 API
+     */
     @GetMapping("/{userId}")
     public ResponseEntity<UserEditResponseDto> getUserAPI(@PathVariable("userId") Long userId) {
         UserEditResponseDto responseDto = userService.getUserService(userId);
@@ -27,12 +30,13 @@ public class UserController {
         return response;
     }
 
+    /**
+     * 유저 정보 수정 API
+     */
     @PatchMapping("/{userId}")
     public ResponseEntity<UserEditResponseDto> updateUserAPI(@PathVariable("userId") Long userId , @RequestBody UserEditRequestDto requestDto) {
         UserEditResponseDto responseDto = userService.updateUserService(userId, requestDto);
         ResponseEntity<UserEditResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.OK);
         return response;
     }
-
-
 }

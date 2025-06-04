@@ -12,19 +12,15 @@ import java.util.Optional;
 
 @Service
 public class CommentService {
-
     // 속성
     private final CommentRepository commentRepository;
-
 
     // 생성자
     public CommentService(CommentRepository commentRepository) {
         this.commentRepository = commentRepository;
     }
 
-
     // 기능
-
     /**
      * 댓글 생성 기능
      */
@@ -131,10 +127,7 @@ public class CommentService {
             // responseDto 반환
             return responseDto;
         }
-
-
     }
-
 }
 
 

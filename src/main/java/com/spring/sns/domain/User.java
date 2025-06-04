@@ -1,6 +1,5 @@
 package com.spring.sns.domain;
 
-
 import com.spring.sns.dto.users.UserCreateRequestDto;
 import com.spring.sns.dto.users.UserEditRequestDto;
 import jakarta.persistence.*;
@@ -17,16 +16,13 @@ public class User {
     private Long userId;
 
     @Column(nullable = false, length = 100, name = "user_email")
-
     private String userEmail;
 
     @Column(nullable = false)
     private String password;
 
     @Column(nullable = false, length = 50)
-
     private String userName;
-
 
     @Column(nullable = false)
     private String content;
@@ -59,7 +55,6 @@ public class User {
     }
 
     //생성자
-
     /**
      * 기본생성자(JPA에서 사용)
      */
@@ -72,7 +67,6 @@ public class User {
         this.userName = userName;
         this.content = content;
     }
-
 
     // 기능
     public void updateUser(UserEditRequestDto requestDto) {
@@ -107,6 +101,5 @@ public class User {
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
-
     }
 }
