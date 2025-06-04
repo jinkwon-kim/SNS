@@ -4,6 +4,7 @@ import com.spring.sns.dto.follows.FollowPostDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -44,6 +45,10 @@ public class FollowRepository {
 
     //친구 게시물 조회
     public List<FollowPostDto> getFollowPosts(List<Long> friendIds) {
+        if (friendIds == null || friendIds.isEmpty()) {
+            // 친구가 없으면 바로 빈 피드 반환
+            return Collections.emptyList();
+        }
 
         String inSql = String.join(",", friendIds.stream().map(id -> "?").toList());
         String sql = "SELECT post_id, user_id, title, content, user_name, created_at, updated_at " +
