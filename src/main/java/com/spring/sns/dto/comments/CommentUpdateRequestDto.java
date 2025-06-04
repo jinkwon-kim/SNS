@@ -1,7 +1,6 @@
 package com.spring.sns.dto.comments;
 
 public class CommentUpdateRequestDto {
-
     // 속성
     private String commentText;
 
@@ -9,9 +8,7 @@ public class CommentUpdateRequestDto {
     public CommentUpdateRequestDto() {
     }
 
-
     // 기능
-
     public String getCommentText() {
         return commentText;
     }

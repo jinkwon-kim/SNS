@@ -1,7 +1,6 @@
 package com.spring.sns.dto.comments;
 
 public class CommentUpdateResponseDto {
-
     // 속성
     private int status;
     private String message;

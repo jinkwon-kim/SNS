@@ -11,7 +11,6 @@ public class UserUpdateRequestDto {
 
     // 기능
     // 게터
-
     public String getUserEmail() {
         return userEmail;
     }

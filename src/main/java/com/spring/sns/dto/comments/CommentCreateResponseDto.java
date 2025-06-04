@@ -1,7 +1,6 @@
 package com.spring.sns.dto.comments;
 
 public class CommentCreateResponseDto {
-
     // 속성
     private int status;
     private String message;
@@ -16,7 +15,6 @@ public class CommentCreateResponseDto {
     public int getStatus() {
         return status;
     }
-
     public String getMessage() {
         return message;
     }

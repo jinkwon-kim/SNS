@@ -14,8 +14,6 @@ public class PostListDto {
     private LocalDateTime updatedAt;
 
     // 생성자
-
-
     public PostListDto(Post post) {
         this.postId = post.getPostId();
         this.title = post.getTitle();

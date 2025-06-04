@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
 @RequestMapping("/follows")
-
 public class FollowController {
+    // 속성
     /*
     1.친구 팔로우 (post)
     2.친구 언팔로우 (delete)
@@ -25,13 +24,16 @@ public class FollowController {
     private final FollowService followService;
     private final FollowRepository followRepository;
 
-    //의존성 주입
+    // 생성자
     public FollowController(FollowService followService, FollowRepository followRepository) {
         this.followService = followService;
         this.followRepository = followRepository;
     }
 
-    //1.친구 팔로우
+    // 기능
+    /**
+     * 친구 팔로우 API
+     */
     @PostMapping("/{userid}/follow/{targetid}")
     public ResponseEntity<String> followtarget(@PathVariable Long userid, @PathVariable Long targetid) {
 
@@ -43,7 +45,9 @@ public class FollowController {
         return ResponseEntity.ok("팔로우가 정상적으로 처리되었습니다");
     }
 
-    //친구 언팔
+    /**
+     * 친구 언팔로우 API
+     */
     @DeleteMapping("/{userid}/follow/{targetid}")
     public ResponseEntity<String> unfollowtarget(@PathVariable Long userid, @PathVariable Long targetid) {
 
@@ -54,7 +58,9 @@ public class FollowController {
         return ResponseEntity.ok("언팔로우가 정상적으로 처리되었습니다");
     }
 
-    //친구 목록조회
+    /**
+     * 친구 목록 조회 API
+     */
     @GetMapping("/{userid}/follow")
     public ResponseEntity<?> getFollowList(@PathVariable Long userid) {
         if (FollowLogin.LoginState.isLoggedIn != 1) {
@@ -65,7 +71,9 @@ public class FollowController {
         return ResponseEntity.ok(followList);
     }
 
-    //팔로잉한 사람의 게시물 즈회
+    /**
+     * 친구 게시물 조회 API
+     */
     @GetMapping("/{targetid}/follow/feed")
 
     public ResponseEntity<?> getFollowFeed(@PathVariable Long targetid) {
@@ -76,6 +84,5 @@ public class FollowController {
         List<FollowPostDto> feed = followService.getFollowFeed(targetid);
         return ResponseEntity.ok(feed);
     }
-
 }
 
